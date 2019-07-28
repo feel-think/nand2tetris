@@ -1,0 +1,18 @@
+/**
+ * out = 1 if in == 0000000000000000 , 0 otherwise;
+ */
+
+CHIP IsZero16 {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    // Put you code here:
+    IsZero4(in=in[0..3], out=IsZero0To3);
+    IsZero4(in=in[4..7], out=IsZero4To7);
+    IsZero4(in=in[8..11], out=IsZero8To11);
+    IsZero4(in=in[12..15], out=IsZero12To15);
+    And(a=IsZero0To3, b=IsZero4To7, out=IsZero0To7);
+    And(a=IsZero8To11, b=IsZero12To15, out=IsZero8To15);
+    And(a=IsZero0To7, b=IsZero8To15, out=out);
+}

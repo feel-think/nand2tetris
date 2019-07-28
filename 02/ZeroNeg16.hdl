@@ -1,0 +1,16 @@
+/**
+ * manipulate in according to z and n:
+ * out = 0 if z == 1
+ * out = !out if n == 1
+ */
+
+CHIP ZeroNeg16 {
+    IN in[16], z, n;
+    OUT out[16];
+
+    PARTS:
+    // Put you code here:
+    Mux16(a=in, b=false, sel=z, out=outL1);
+    Not16(in=outL1, out=notOutL1);
+    Mux16(a=outL1, b=notOutL1, sel=n, out=out);
+}
