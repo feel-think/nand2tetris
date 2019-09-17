@@ -1,0 +1,28 @@
+/**
+ * Computes the result of a - b
+ * The most significant carry bit is ignored.
+ */
+
+CHIP Sub16 {
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    // Put you code here:
+    HalfSuber(a=a[0],  b=b[0],             diff=out[0],  carry=carry0);
+    FullSuber(a=a[1],  b=b[1],  c=carry0,  diff=out[1],  carry=carry1);
+    FullSuber(a=a[2],  b=b[2],  c=carry1,  diff=out[2],  carry=carry2);
+    FullSuber(a=a[3],  b=b[3],  c=carry2,  diff=out[3],  carry=carry3);
+    FullSuber(a=a[4],  b=b[4],  c=carry3,  diff=out[4],  carry=carry4);
+    FullSuber(a=a[5],  b=b[5],  c=carry4,  diff=out[5],  carry=carry5);
+    FullSuber(a=a[6],  b=b[6],  c=carry5,  diff=out[6],  carry=carry6);
+    FullSuber(a=a[7],  b=b[7],  c=carry6,  diff=out[7],  carry=carry7);
+    FullSuber(a=a[8],  b=b[8],  c=carry7,  diff=out[8],  carry=carry8);
+    FullSuber(a=a[9],  b=b[9],  c=carry8,  diff=out[9],  carry=carry9);
+    FullSuber(a=a[10], b=b[10], c=carry9,  diff=out[10], carry=carry10);
+    FullSuber(a=a[11], b=b[11], c=carry10, diff=out[11], carry=carry11);
+    FullSuber(a=a[12], b=b[12], c=carry11, diff=out[12], carry=carry12);
+    FullSuber(a=a[13], b=b[13], c=carry12, diff=out[13], carry=carry13);
+    FullSuber(a=a[14], b=b[14], c=carry13, diff=out[14], carry=carry14);
+    FullSuber(a=a[15], b=b[15], c=carry14, diff=out[15], carry=carry15);
+}

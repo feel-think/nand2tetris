@@ -1,0 +1,15 @@
+/**
+ * Computes the result of a - b.
+ */
+
+CHIP HalfSuber {
+    IN a, b;    // 1-bit inputs
+    OUT diff,   // result bit of a - b
+        carry;  // whether need to borrow a bit, 0 represent no need of borrow, 1 represent need
+
+    PARTS:
+    // Put you code here:
+    Xor(a=a, b=b, out=diff);
+    Not(in=a, out=notA);
+    And(a=notA, b=b, out=carry);
+}

@@ -1,0 +1,15 @@
+/**
+ * Computes the result of a - b - c.
+ */
+
+CHIP FullSuber {
+    IN a, b, c;  // 1-bit inputs
+    OUT diff,    // result bit of a - b - c
+        carry;   // whether need to borrow a bit, 0 represent no need of borrow, 1 represent need
+
+    PARTS:
+    // Put you code here:
+    HalfSuber(a=a, b=b, diff=diffOfab, carry=carryOfab);
+    HalfSuber(a=diffOfab, b=c, diff=diff, carry=carryOfDiffabAndc);
+    Xor(a=carryOfab, b=carryOfDiffabAndc, out=carry);
+}
